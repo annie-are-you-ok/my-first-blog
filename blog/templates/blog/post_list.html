@@ -1,42 +1,14 @@
-<!-- <!DOCTYPE html> -->
-<!-- <html>
-    <head>
-        <title>Annie's blog</title>
-    </head>
-    <h1>100 Books to Read Before You Die</h1>
-    <h2>Books! Books! Book!</h2>
-    <body>
-    <p><strong>1984</strong> George Orwell</p>
-    <p><strong>Adventures of Huckleberry Finn</strong> Mark Twain</p>
-    <p><strong>The Adventures of Sherlock Holmes</strong> Arthur Conan Doyle</p>
-    <p><strong>The Alchemist</strong> Paulo Coelho</p>
-    <p><strong>The Aleph and Other Stories</strong> Jorge Luis Borges</p>
-    <p><strong>Animal Farm</strong> George Orwell</p>
-    <p><strong>Aesop's Fables</strong>Aesop</p>
-    <p><strong>Alice's Adventures in Wonderland</strong>Lewis Carroll</p>
-    <p><strong>Anna Karenina</strong> Leo Tolstoy</p>
-    <p><strong> Anne of Green Gables</strong> L.M. Montgomery</p>
-    <p><strong></strong></p>    
-    
-    <a href="https://reedsy.com/discovery/blog/best-books-to-read-in-a-lifetime">Link</a>
-    </body>
-</html> -->
+{% extends 'blog/base.html' %}
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </header>
-
-        {% for post in posts %}
-    <article>
-        <time>published: {{ post.published_date }}</time>
-        <h2><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </article>
-{% endfor %}
-</html>
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
+            
